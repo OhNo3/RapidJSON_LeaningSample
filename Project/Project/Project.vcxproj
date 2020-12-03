@@ -17,7 +17,6 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -53,25 +52,23 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="Shared" >
+  <ImportGroup Label="Shared">
   </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -85,7 +82,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -142,8 +138,49 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SourceFiles\Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SourceFiles\External\rapidjson\include\allocators.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\cursorstreamwrapper.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\document.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\encodedstream.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\encodings.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\error\en.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\error\error.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\filereadstream.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\filewritestream.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\fwd.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\internal\biginteger.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\internal\clzll.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\internal\diyfp.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\internal\dtoa.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\internal\ieee754.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\internal\itoa.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\internal\meta.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\internal\pow10.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\internal\regex.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\internal\stack.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\internal\strfunc.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\internal\strtod.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\internal\swap.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\istreamwrapper.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\memorybuffer.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\memorystream.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\msinttypes\inttypes.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\msinttypes\stdint.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\ostreamwrapper.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\pointer.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\prettywriter.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\rapidjson.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\reader.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\schema.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\stream.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\stringbuffer.h" />
+    <ClInclude Include="SourceFiles\External\rapidjson\include\writer.h" />
+    <ClInclude Include="SourceFiles\Main.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
