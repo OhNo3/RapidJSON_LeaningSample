@@ -22,8 +22,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{fa9f6982-6000-4ff5-bc12-fe1d10e9970a}</ProjectGuid>
-    <RootNamespace>RapidJSONLeaningSample</RootNamespace>
+    <ProjectGuid>{28bc783f-6a02-4660-9b85-d67eacdb38ee}</ProjectGuid>
+    <RootNamespace>Project</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
