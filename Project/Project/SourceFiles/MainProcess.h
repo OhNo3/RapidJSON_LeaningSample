@@ -1,12 +1,12 @@
 /*=============================================================================
 /*-----------------------------------------------------------------------------
-/*	[Main.h] メインモジュールヘッダ
+/*	[MainProcess.h] メインの実行処理
 /*	Author：Kousuke,Ohno.
 /*-----------------------------------------------------------------------------
-/*	説明：このヘッダには特に定義することはなし。
+/*	説明：メインの実行処理
 =============================================================================*/
-#ifndef MAIN_H_
-#define	MAIN_H_
+#ifndef MAIN_PROCESS_H_
+#define	MAIN_PROCESS_H_
 
 /*--- インクルードファイル ---*/
 
@@ -16,10 +16,32 @@
 
 
 /*-------------------------------------
-/* クラス
+/* メインの実行処理クラス
 -------------------------------------*/
+class MainProcess
+{
+public:
+	MainProcess(void);
+	~MainProcess(void);
 
-#endif //MAIN_H_
+public:
+	bool StartUp(void);
+	void Run(void);
+	void ShutDown(void);
+
+private:
+	bool Init(void);
+	void Uninit(void);
+	void Input(void);
+	void Update(float deltaTime);
+	void GenerateOutput(void);
+
+private:
+	class Manager* manager_;
+};
+
+
+#endif //MAIN_PROCESS_H_
 /*=============================================================================
 /*		End of File
 =============================================================================*/
