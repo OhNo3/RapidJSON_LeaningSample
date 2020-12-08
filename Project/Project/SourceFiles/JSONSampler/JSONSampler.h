@@ -1,12 +1,17 @@
+#pragma once
+class JSONSampler
+{
+};
+
 /*=============================================================================
 /*-----------------------------------------------------------------------------
-/*	[JSONHelper.h] RapidJSONヘルパークラス
+/*	[JSONSampler.h] RapidJSONサンプラークラス
 /*	Author：Kousuke,Ohno.
 /*-----------------------------------------------------------------------------
-/*	説明：JSON操作ヘルパークラス
+/*	説明：JSON操作サンプラークラス
 =============================================================================*/
-#ifndef JSON_HELPER_H_
-#define	JSON_HELPER_H_
+#ifndef JSON_SAMPLER_H_
+#define	JSON_SAMPLER_H_
 
 /*--- インクルードファイル ---*/
 
@@ -16,29 +21,35 @@
 
 
 /*-------------------------------------
-/* RapidJSONヘルパークラス
+/* RapidJSONサンプラークラス
 -------------------------------------*/
-class JSONHelper
+class JSONSampler
 {
 private:
-	JSONHelper(void);
+	JSONSampler(void);
 
 public:
-	~JSONHelper(void);
+	~JSONSampler(void);
 
-	//サンプル関数
-	static void RapidJSONSampler(void);
-
-	//読み書き関数
 	static void LoadJSON(void);
 	static void SaveJSON(void);
+
+	//文字列データをDOMに渡して構文解析、読み込み表示する処理
+	static void DOMParseSample01(void);
+	static void DOMParseSample02(void);
+
+	//メモリからの入出力ストリーム
+	static void MemoryIOStreamingSample(void);
+
+	//ファイルからの入出力ストリーム
+	static void FileIOStreamingSample(void);
 
 
 private:
 
 };
 
-#endif //JSON_HELPER_H_
+#endif //JSON_SAMPLER_H_
 /*=============================================================================
 /*		End of File
 =============================================================================*/
