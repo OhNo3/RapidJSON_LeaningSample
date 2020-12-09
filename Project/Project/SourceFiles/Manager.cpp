@@ -40,6 +40,7 @@ Manager* Manager::Create(void)
 -----------------------------------------------------------------------------*/
 void Manager::InitAll(void)
 {
+	//ƒTƒ“ƒvƒ‹‚ÌŒÄ‚Ño‚µ
 	JSONHelper::RapidJSONSampler();
 }
 

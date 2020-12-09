@@ -48,15 +48,8 @@ JSONHelper::~JSONHelper(void)
 -----------------------------------------------------------------------------*/
 void JSONHelper::RapidJSONSampler(void)
 {
-	//1.文字列データをDOMに渡して構文解析し、読み込み表示する処理
-	//JSONSampler::DOMParseSample01();
-	//JSONSampler::DOMParseSample02();
-
-	//2.メモリからの入出力表示する処理
-	//JSONSampler::MemoryIOStreamingSample();
-
-	//3.ファイルからの入出力表示する処理
-	JSONSampler::FileIOStreamingSample();
+	//関数の中身で定義した、サンプルの呼び出し関数
+	JSONSampler::LoadSamples();
 }
 
 /*-----------------------------------------------------------------------------
