@@ -16,14 +16,13 @@
 #include "../External/rapidjson/include/document.h"
 //書き込み
 #include "../External/rapidjson/include/writer.h"
-#include "../External/rapidjson/include/filewritestream.h"
+#include "../External/rapidjson/include/filewritestream.h"  //インデント・改行なし
+#include "../External/rapidjson/include/prettywriter.h"     //インデント・改行あり
 //読み込み
 #include "../External/rapidjson/include/reader.h"
 #include "../External/rapidjson/include/filereadstream.h"
 //エラーハンドル
 #include "../External/rapidjson/include/error/en.h"
-
-#include "../External/rapidjson/include/prettywriter.h"
 
 using namespace rapidjson;
 

@@ -1,46 +1,41 @@
 /*=============================================================================
 /*-----------------------------------------------------------------------------
-/*	[Manager.h] 全体の処理の管理クラス
+/*	[JSONManager.h] JSON管理クラス
 /*	Author：Kousuke,Ohno.
 /*-----------------------------------------------------------------------------
-/*	説明：全体の処理の管理クラス
+/*	説明：JSON管理クラス
 =============================================================================*/
-#ifndef MANAGER_H_
-#define	MANAGER_H_
+#ifndef JSON_MANAGER_H_
+#define	JSON_MANAGER_H_
 
 /*--- インクルードファイル ---*/
+#include "External/rapidjson/include/document.h"
 
 /*--- 構造体定義 ---*/
 
 /*--- クラスの前方宣言 ---*/
 
 
-/*-------------------------------------
-/* 全体の処理の管理クラス
+/*-------------------------------------	   
+/* JSON管理クラス
 -------------------------------------*/
-class Manager
+class JSONManager
 {
+private:
+	JSONManager(void);
+
 public:
-	Manager(void);
-	~Manager(void);
+	~JSONManager(void);
 
-	static Manager* Create(void);
+	static bool LoadJSON(const std::string& inFileName, rapidjson::Document& outDoc);
+	static void SaveJSON(const std::string& inFileName);
 
-	void InitAll(void);
-	void UninitAll(void);
-	void InputAll(void);
-	void UpdateAll(float deltaTime);
-	void GenerateOutputAll(void);
-
-private:
-	void LoadData(void);
-	void SaveData(void);
-
-private:
+public:
+	static void GenarateNewJSONFile(const std::string& inFileName);
+	
 };
 
-
-#endif //MANAGER_H_
+#endif //JSON_MANAGER_H_
 /*=============================================================================
 /*		End of File
 =============================================================================*/

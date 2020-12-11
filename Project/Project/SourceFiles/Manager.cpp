@@ -10,6 +10,9 @@
 #include "StdAfx.h"
 #include "Manager.h"
 #include "JSONHelper/JSONHelper.h"
+#include "JSONManager.h"
+
+//#include "External/rapidjson/include/document.h"
 
 /*-----------------------------------------------------------------------------
 /* コンストラクタ
@@ -40,8 +43,7 @@ Manager* Manager::Create(void)
 -----------------------------------------------------------------------------*/
 void Manager::InitAll(void)
 {
-	//サンプルの呼び出し
-	JSONHelper::RapidJSONSampler();
+	Manager::LoadData();
 }
 
 /*-----------------------------------------------------------------------------
@@ -69,6 +71,57 @@ void Manager::UpdateAll(float deltaTime)
 /* 描画処理
 -----------------------------------------------------------------------------*/
 void Manager::GenerateOutputAll(void)
+{
+}
+
+/*-----------------------------------------------------------------------------
+/* データの読み込み処理
+-----------------------------------------------------------------------------*/
+void Manager::LoadData(void)
+{
+	//JSONファイルのディレクトリおよび、ファイル名
+	std::string file_name = "Asset/SaveData/test.json";
+
+	//DOMのRoot
+	rapidjson::Document doc(rapidjson::kObjectType);
+
+	//JSONファイルの読み込み
+	const int max_trial_count = 3; //最大試行回数
+	int		  trial_count	  = 0; //試行回数
+
+	//成功するまでループを回す
+	for (;;)
+	{
+		const bool is_find	  = JSONManager::LoadJSON(file_name, doc);
+		const bool is_failed  = (is_find == false && (trial_count >= max_trial_count));
+		if (is_find == false)
+		{
+			//ファイルの作成処理
+			JSONManager::GenarateNewJSONFile(file_name);
+			std::cout << "JSONファイルが作成された:" + file_name + "\n";
+		}
+
+		//成功でも失敗でも抜ける
+		if (is_find || is_failed) { break; }
+
+		//回数をカウント
+		trial_count++;
+	}
+
+
+#if defined (_DEBUG)||(DEBUG)
+
+#else
+
+#endif // RELEASE
+
+
+}
+
+/*-----------------------------------------------------------------------------
+/* データの保存処理
+-----------------------------------------------------------------------------*/
+void Manager::SaveData(void)
 {
 }
 
