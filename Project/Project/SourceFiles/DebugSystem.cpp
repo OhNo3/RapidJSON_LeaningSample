@@ -13,7 +13,7 @@
 /*-----------------------------------------------------------------------------
 /* デバッグ用の文字列データ出力処理
 -----------------------------------------------------------------------------*/
-std::string DebugSystem::OutputErrorDialogString(std::string inErrorCode, std::string inFileName, int inLineNumber, std::string inFunctionName)
+std::string DebugSystem::OutputErrorString(std::string inErrorMsg, std::string inFileName, int inLineNumber, std::string inFunctionName)
 {
 	//ファイル名をだけを取り出す
 	std::string file_name = inFileName;
@@ -26,11 +26,11 @@ std::string DebugSystem::OutputErrorDialogString(std::string inErrorCode, std::s
 	}
 
 	//各、文字列の要素をまとめたもの
-	std::string file_name_and_line_num = "ファイル名：" + file_name + "(" + std::to_string(inLineNumber) + ")\n";
-	std::string function_name = "関数名    ：" + inFunctionName + "()\n";
-	std::string error_code = "エラー内容：" + inErrorCode + "\n";
+	std::string file_name_and_line_num  = "ファイル名：" + file_name      + "(" + std::to_string(inLineNumber) + ")\n";
+	std::string function_name			= "関数名    ：" + inFunctionName + "()\n";
+	std::string error_msg				= "エラー内容：" + inErrorMsg     + "\n";
 
-	return std::string(file_name_and_line_num + function_name + error_code);
+	return std::string(file_name_and_line_num + function_name + error_msg);
 }
 
 /*=============================================================================
