@@ -33,10 +33,6 @@ public:
 	void GenerateOutputAll(void);
 
 private:
-	void LoadData(void);
-	void SaveData(void);
-
-private:
 };
 
 

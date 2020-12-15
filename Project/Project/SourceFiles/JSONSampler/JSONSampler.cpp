@@ -12,17 +12,17 @@
 
 //RapidJSONはJSONファイルを高速に構文解析するためのAPI
 
-//RapidJSONそのもの
-#include "../External/rapidjson/include/document.h"
-//書き込み
-#include "../External/rapidjson/include/writer.h"
-#include "../External/rapidjson/include/filewritestream.h"  //インデント・改行なし
-#include "../External/rapidjson/include/prettywriter.h"     //インデント・改行あり
-//読み込み
-#include "../External/rapidjson/include/reader.h"
-#include "../External/rapidjson/include/filereadstream.h"
-//エラーハンドル
-#include "../External/rapidjson/include/error/en.h"
+////RapidJSONそのもの
+//#include "../External/rapidjson/include/document.h"
+////書き込み
+//#include "../External/rapidjson/include/writer.h"
+//#include "../External/rapidjson/include/filewritestream.h"  //インデント・改行なし
+//#include "../External/rapidjson/include/prettywriter.h"     //インデント・改行あり
+////読み込み
+//#include "../External/rapidjson/include/reader.h"
+//#include "../External/rapidjson/include/filereadstream.h"
+////エラーハンドル
+//#include "../External/rapidjson/include/error/en.h"
 
 using namespace rapidjson;
 
@@ -227,7 +227,7 @@ void JSONSampler::FileIOStreamingSample(void)
     fp = fopen("tmp.txt", "wb");
     FileWriteStream ws(fp, buf, sizeof(buf));   //書き込み専用
 
-#if 1
+#if 2
     Writer<FileWriteStream> writer(ws);         //インデントなし
 #else
     PrettyWriter<FileWriteStream> writer(ws);   //インデントあり

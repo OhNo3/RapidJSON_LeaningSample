@@ -9,7 +9,7 @@
 #define	JSON_HELPER_H_
 
 /*--- インクルードファイル ---*/
-#include "../External/rapidjson/include/document.h"
+#include "../StdAfx.h"
 
 /*--- 構造体定義 ---*/
 
@@ -47,6 +47,13 @@ public:
 	// 3番目のパラメータにオブジェクト内のプロパティから取得する値が出力されます。
 	// さらに、プロパティが見つからなかった場合、戻り値を変更しないことが保証されています。
 	static bool GetFloat(const rapidjson::Value& inObject, const char* inPropertyName, float& outFloat);
+
+	// GetDouble()は,成功した場合に true を返します．
+	// 1番目のパラメータには、JSONオブジェクトを入力。
+	// 2番目のパラメータには、オブジェクト内のプロパティ名を入力。
+	// 3番目のパラメータにオブジェクト内のプロパティから取得する値が出力されます。
+	// さらに、プロパティが見つからなかった場合、戻り値を変更しないことが保証されています。
+	static bool GetDouble(const rapidjson::Value& inObject, const char* inPropertyName, double& outDouble);
 
 	// GetString()は,成功した場合に true を返します．
 	// 1番目のパラメータには、JSONオブジェクトを入力。
@@ -90,6 +97,19 @@ public:
 						, rapidjson::Value& inObject
 						, const char* inPropertyName
 						, float value);
+
+
+	// AddDouble()は,JSONのDocumentに、float型のデータメンバを追加します。
+	// 1番目のパラメータには、JSONのDocumentを入力。
+	// 2番目のパラメータには、JSONオブジェクトを入力。
+	// 3番目のパラメータには、プロパティ名を命名して入力。
+	// 4番目のパラメータには、命名したプロパティが含むdouble型の"値"を入力。
+	// さらに、入力した値がdouble型でなかった場合、警告を発行します。
+	static void AddDouble(rapidjson::Document::AllocatorType& alloc
+						 , rapidjson::Value& inObject
+						 , const char* inPropertyName
+						 , double value);
+
 
 	// AddString()は,JSONのDocumentに、string型のデータメンバを追加します。
 	// 1番目のパラメータには、JSONのDocumentを入力。

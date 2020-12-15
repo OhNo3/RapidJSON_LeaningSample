@@ -9,7 +9,7 @@
 #define	JSON_MANAGER_H_
 
 /*--- インクルードファイル ---*/
-#include "External/rapidjson/include/document.h"
+#include "StdAfx.h"
 
 /*--- 構造体定義 ---*/
 
@@ -22,17 +22,34 @@
 class JSONManager
 {
 private:
+	enum class LanguageSetting
+	{
+		None = -1
+		, Jp
+		, En
+		, Max
+	};
+
+private:
 	JSONManager(void);
 
 public:
 	~JSONManager(void);
 
+	//ロードとセーブ関係
 	static bool LoadJSON(const std::string& inFileName, rapidjson::Document& outDoc);
-	static void SaveJSON(const std::string& inFileName);
+	static bool LoadData(const std::string& inFileName);
+	static void SaveData(const std::string& inFileName);
 
-public:
-	static void GenarateNewJSONFile(const std::string& inFileName);
-	
+	//プロパティ関係
+	static void LoadProperties(const rapidjson::Value& inObject);
+	static void SaveProperties(rapidjson::Document::AllocatorType& alloc
+							  ,rapidjson::Value& inObject);
+
+private:
+	//解析エラーのメッセージ
+	static const char* GetParseErrorMsg(rapidjson::ParseErrorCode inParseErrorCode, const LanguageSetting inSelectLanguage);
+	static const char* GetParseError_Jp(rapidjson::ParseErrorCode inParseErrorCode);
 };
 
 #endif //JSON_MANAGER_H_

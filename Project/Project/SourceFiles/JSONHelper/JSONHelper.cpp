@@ -9,24 +9,11 @@
 /*--- インクルードファイル ---*/
 #include "../StdAfx.h"
 #include "JSONHelper.h"
+
+//RapidJSONを利用したサンプル関数群
 #include "../JSONSampler/JSONSampler.h"
 
 //RapidJSONはJSONファイルを高速に構文解析するためのAPI
-
-//RapidJSONそのもの
-#include "../External/rapidjson/include/document.h"
-//書き込み
-#include "../External/rapidjson/include/writer.h"
-#include "../External/rapidjson/include/filewritestream.h"
-//読み込み
-#include "../External/rapidjson/include/reader.h"
-#include "../External/rapidjson/include/filereadstream.h"
-//エラーハンドル
-#include "../External/rapidjson/include/error/en.h"
-
-#include "../External/rapidjson/include/prettywriter.h"
-
-
 using namespace rapidjson;
 
 /*-----------------------------------------------------------------------------
@@ -64,7 +51,7 @@ bool JSONHelper::GetInt(const rapidjson::Value& inObject, const char* inProperty
 		return false;
 	}
 
-	//値の型を取得し、整数であることを確認
+	//値の型を取得し、整数型であることを確認
 	auto& property = itr->value;
 	if (!property.IsInt())
 	{
@@ -88,7 +75,31 @@ bool JSONHelper::GetFloat(const rapidjson::Value& inObject, const char* inProper
 		return false;
 	}
 
-	//値の型を取得し、整数であることを確認
+	//値の型を取得し、実数型であることを確認
+	auto& property = itr->value;
+	if (!property.IsFloat())
+	{
+		return false;
+	}
+
+	//プロパティの値を出力
+	outFloat = property.GetFloat();
+	return true;
+}
+
+/*-----------------------------------------------------------------------------
+/* JSONのDouble型メンバプロパティの取得関数
+-----------------------------------------------------------------------------*/
+bool JSONHelper::GetDouble(const rapidjson::Value& inObject, const char* inPropertyName, double& outDouble)
+{
+	//このプロパティが存在するかどうかを確認
+	auto itr = inObject.FindMember(inPropertyName);
+	if (itr == inObject.MemberEnd())
+	{
+		return false;
+	}
+
+	//値の型を取得し、倍精度実数型であることを確認
 	auto& property = itr->value;
 	if (!property.IsDouble())
 	{
@@ -96,7 +107,7 @@ bool JSONHelper::GetFloat(const rapidjson::Value& inObject, const char* inProper
 	}
 
 	//プロパティの値を出力
-	outFloat = property.GetDouble();
+	outDouble = property.GetDouble();
 	return true;
 }
 
@@ -112,7 +123,7 @@ bool JSONHelper::GetString(const rapidjson::Value& inObject, const char* inPrope
 		return false;
 	}
 
-	//値の型を取得し、整数であることを確認
+	//値の型を取得し、文字列型であることを確認
 	auto& property = itr->value;
 	if (!property.IsString())
 	{
@@ -136,7 +147,7 @@ bool JSONHelper::GetBool(const rapidjson::Value& inObject, const char* inPropert
 		return false;
 	}
 
-	//値の型を取得し、整数であることを確認
+	//値の型を取得し、論理型であることを確認
 	auto& property = itr->value;
 	if (!property.IsBool())
 	{
@@ -154,6 +165,7 @@ bool JSONHelper::GetBool(const rapidjson::Value& inObject, const char* inPropert
 void JSONHelper::AddInt(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObject, const char* inPropertyName, int value)
 {
 	rapidjson::Value v(value);
+	assert(v.IsInt());
 	inObject.AddMember(rapidjson::StringRef(inPropertyName), v, alloc);
 }
 
@@ -163,6 +175,17 @@ void JSONHelper::AddInt(rapidjson::Document::AllocatorType& alloc, rapidjson::Va
 void JSONHelper::AddFloat(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObject, const char* inPropertyName, float value)
 {
 	rapidjson::Value v(value);
+	assert(v.IsFloat());
+	inObject.AddMember(rapidjson::StringRef(inPropertyName), v, alloc);
+}
+
+/*-----------------------------------------------------------------------------
+/* JSONのDouble型メンバプロパティの追加関数
+-----------------------------------------------------------------------------*/
+void JSONHelper::AddDouble(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObject, const char* inPropertyName, double value)
+{
+	rapidjson::Value v(value);
+	assert(v.IsDouble());
 	inObject.AddMember(rapidjson::StringRef(inPropertyName), v, alloc);
 }
 
@@ -173,8 +196,9 @@ void JSONHelper::AddString(rapidjson::Document::AllocatorType& alloc, rapidjson:
 {
 	rapidjson::Value v;
 	v.SetString(value.c_str()
-				, static_cast<rapidjson::SizeType>(value.length())
-				, alloc);
+			   , static_cast<rapidjson::SizeType>(value.length())
+			   , alloc);
+	assert(v.IsString());
 	inObject.AddMember(rapidjson::StringRef(inPropertyName), v, alloc);
 }
 
@@ -184,6 +208,7 @@ void JSONHelper::AddString(rapidjson::Document::AllocatorType& alloc, rapidjson:
 void JSONHelper::AddBool(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObject, const char* inPropertyName, bool value)
 {
 	rapidjson::Value v(value);
+	assert(v.IsString());
 	inObject.AddMember(rapidjson::StringRef(inPropertyName), v, alloc);
 }
 
