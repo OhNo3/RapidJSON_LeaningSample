@@ -179,12 +179,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="test.json" />
+    <None Include="Asset\SaveData\test.json" />
+    <None Include="Asset\SaveData\data.json" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Cpp_CommentTemplate\Header.txt" />
     <Text Include="Cpp_CommentTemplate\Source.txt" />
-    <Text Include="TestCode.txt" />
-    <Text Include="json.txt" />
-    <Text Include="tmp.txt" />
   </ItemGroup>
 </Project>
