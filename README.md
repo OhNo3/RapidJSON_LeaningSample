@@ -1,4 +1,4 @@
-# RapidJSON_LeaningSample
+# RapidJSON_LearningSample
 
 ## Qiita記事
 https://qiita.com/k2ymg/items/eef3b15eaa27a89353ab
